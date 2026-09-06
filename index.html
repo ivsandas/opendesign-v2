@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="bg"><head>
+<html lang="bg"><head><script type="application/json" data-od-external-dependencies>["https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap","https://open.spotify.com/embed/album/5vM1gqMQFLinGOtaNNy8e2?si=kVnBVkJKRtK826XE6z_tdw"]</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nicole Samareva — Harpist</title>
@@ -237,7 +237,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 20%;
+      object-position: center center;
     }
 
     .hero-portrait::after {
@@ -456,6 +456,89 @@
     .highlight-meta {
       font-size: 0.85rem;
       color: var(--ink-muted);
+    }
+
+    /* Events */
+    .events-intro {
+      max-width: 68ch;
+      color: var(--ink-muted);
+      margin-bottom: 2rem;
+    }
+
+    .events-block {
+      margin-bottom: 2.5rem;
+    }
+
+    .events-subheading {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .events-list-render {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .event-item {
+      display: grid;
+      grid-template-columns: 5rem 1fr;
+      gap: 1rem;
+      align-items: baseline;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s ease;
+    }
+
+    .event-item:hover {
+      background: rgba(139, 38, 53, 0.02);
+    }
+
+    .event-date {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      line-height: 1.3;
+    }
+
+    .event-title {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-weight: 500;
+      margin: 0 0 0.2rem;
+      line-height: 1.3;
+    }
+
+    .event-location {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      margin: 0;
+    }
+
+    .event-empty {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      font-style: italic;
+      padding: 0.75rem 0;
+    }
+
+    @media (max-width: 560px) {
+      .event-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+      .event-date {
+        padding-top: 0;
+      }
     }
 
     /* Awards archive */
@@ -949,6 +1032,7 @@
         <ul class="nav-links">
           <li><a href="#bio" data-i18n="nav.bio">Биография</a></li>
           <li><a href="#highlights" data-i18n="nav.highlights">Отличия</a></li>
+          <li><a href="#events" data-i18n="nav.events">Събития</a></li>
           <li><a href="#awards" data-i18n="nav.awards">Архив</a></li>
           <li><a href="#gallery" data-i18n="nav.gallery">Снимки</a></li>
           <li><a href="#album" data-i18n="nav.album">Албум</a></li>
@@ -969,7 +1053,7 @@
     <!-- Hero -->
     <section class="hero" id="hero" data-od-id="hero">
       <div class="hero-portrait">
-        <img src="IMG_2247.JPG" alt="" class="hero-image" loading="eager" decoding="async">
+        <img src="images/img01.jpg" alt="Nicole Samareva portrait" class="hero-image" loading="eager" decoding="async">
       </div>
       <div class="hero-content">
         
@@ -977,7 +1061,7 @@
         <h1 class="hero-title" data-i18n="hero.title">Никол Самарева</h1>
         <p class="hero-lead" data-i18n="hero.lead">16-годишна българска арфистка, носителка на над 40 международни и национални награди.</p>
         <div class="hero-actions">
-          <a href="#booking" class="btn" data-i18n="hero.ctaPrimary">Запази дата</a>
+          <a href="#booking" class="btn" data-i18n="hero.ctaPrimary">Запитване</a>
           <a href="https://open.spotify.com/artist/2jEvkX5oyd1YmjEco67G9p?si=el0H2UipT7aOJPp4r6qfsg" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" data-i18n="hero.ctaSecondary">Слушай</a>
         </div>
       </div>
@@ -1023,6 +1107,25 @@
       </div>
     </section>
 
+    <!-- Events -->
+    <section id="events" data-od-id="events">
+      <div class="container reveal">
+        <div class="section-header">
+          <p class="kicker" data-i18n="events.kicker">Календар</p>
+          <h2 data-i18n="events.heading">Събития</h2>
+          <p class="events-intro" data-i18n="events.intro">Предстоящи и минали концерти и участия.</p>
+        </div>
+        <div class="events-block">
+          <h3 class="events-subheading" data-i18n="events.upcoming">Предстоящи</h3>
+          <ol class="events-list-render" data-events-upcoming=""></ol>
+        </div>
+        <div class="events-block">
+          <h3 class="events-subheading" data-i18n="events.past">Минали</h3>
+          <ol class="events-list-render" data-events-past=""></ol>
+        </div>
+      </div>
+    </section>
+
     <!-- Full awards archive -->
     <section id="awards" data-od-id="awards">
       <div class="container reveal">
@@ -1063,22 +1166,22 @@
         </div>
         <div class="gallery-grid">
           <figure class="gallery-item gallery-item-wide">
-            <img src="DSC_8882.JPEG" alt="" loading="lazy" decoding="async">
+            <img src="images/img02.jpg" alt="" loading="lazy" decoding="async">
+          </figure>
+          <figure class="gallery-item" style="transform: translate(-1px, -1px); font-weight: 400; height: 468px; width: 304.664px;">
+            <img src="images/img03.jpg" alt="" loading="lazy" decoding="async">
           </figure>
           <figure class="gallery-item">
-            <img src="IMG_6229.JPG" alt="" loading="lazy" decoding="async">
-          </figure>
-          <figure class="gallery-item">
-            <img src="IMG_2299.JPEG" alt="" loading="lazy" decoding="async">
+            <img src="images/img04.jpg" alt="" loading="lazy" decoding="async" style="width: 331.172px; height: 345.375px;">
           </figure>
           <figure class="gallery-item gallery-item-wide">
-            <img src="DSC_9172.JPEG" alt="" loading="lazy" decoding="async">
+            <img src="images/img05.jpg" alt="" loading="lazy" decoding="async">
           </figure>
           <figure class="gallery-item">
-            <img src="DSC_9110.JPEG" alt="" loading="lazy" decoding="async">
+            <img src="images/img06.jpg" alt="" loading="lazy" decoding="async">
           </figure>
           <figure class="gallery-item gallery-item-wide">
-            <img src="IMG_1203.PNG" alt="" loading="lazy" decoding="async">
+            <img src="images/img07.jpg" alt="" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -1088,7 +1191,7 @@
     <section id="album" data-od-id="album">
       <div class="container album-grid reveal">
         <a href="https://open.spotify.com/album/5vM1gqMQFLinGOtaNNy8e2?si=kVnBVkJKRtK826XE6z_tdw" target="_blank" rel="noopener noreferrer" class="album-cover" aria-label="Open album on Spotify">
-          <img src="IMG_6159.JPG" alt="" class="album-cover-img" loading="lazy" decoding="async">
+          <img src="images/img08.jpg" alt="" class="album-cover-img" loading="lazy" decoding="async">
         </a>
         <div class="album-body">
           <p class="kicker" data-i18n="album.kicker">Албум</p>
@@ -1115,29 +1218,27 @@
           <div class="form-row">
             <div class="form-group">
               <label for="name" data-i18n="form.nameLabel">Име</label>
-              <input type="text" id="name" name="name" required="">
+              <input type="text" id="name" name="name" autocomplete="name" required="">
               <div class="field-error" id="name-error"></div>
             </div>
             <div class="form-group">
               <label for="organisation" data-i18n="form.orgLabel">Организация</label>
-              <input type="text" id="organisation" name="organisation">
+              <input type="text" id="organisation" name="organisation" autocomplete="organization">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="email" data-i18n="form.emailLabel">Имейл</label>
-              <input type="email" id="email" name="email" required="">
+              <input type="email" id="email" name="email" autocomplete="email" required="">
               <div class="field-error" id="email-error"></div>
             </div>
             <div class="form-group">
               <label for="eventType" data-i18n="form.eventLabel">Тип събитие</label>
-              <select id="eventType" name="eventType" required="">
+              <select id="eventType" name="eventType" autocomplete="off" required="">
                 <option value="" data-i18n="form.eventPlaceholder">Изберете тип</option>
-                <option value="recital" data-i18n="form.eventRecital">Рецитал</option>
-                <option value="concerto" data-i18n="form.eventConcerto">Концерт</option>
-                <option value="chamber" data-i18n="form.eventChamber">Камерна музика</option>
+                <option value="concert" data-i18n="form.eventConcert">Участие в концерт</option>
                 <option value="private" data-i18n="form.eventPrivate">Частно събитие</option>
-                <option value="masterclass" data-i18n="form.eventMasterclass">Майсторски клас</option>
+                <option value="other" data-i18n="form.eventOther">Друго запитване</option>
               </select>
               <div class="field-error" id="eventType-error"></div>
             </div>
@@ -1145,16 +1246,16 @@
           <div class="form-row">
             <div class="form-group">
               <label for="date" data-i18n="form.dateLabel">Дата</label>
-              <input type="date" id="date" name="date">
+              <input type="date" id="date" name="date" autocomplete="off">
             </div>
             <div class="form-group">
               <label for="city" data-i18n="form.cityLabel">Град</label>
-              <input type="text" id="city" name="city">
+              <input type="text" id="city" name="city" autocomplete="address-level2">
             </div>
           </div>
           <div class="form-group">
             <label for="venue" data-i18n="form.venueLabel">Място / зала</label>
-            <input type="text" id="venue" name="venue">
+            <input type="text" id="venue" name="venue" autocomplete="off">
           </div>
           <div class="form-group">
             <label for="programme" data-i18n="form.programmeLabel">Програма / забележки</label>
@@ -1190,13 +1291,14 @@
         </div>
         <div class="footer-col">
           <h4 data-i18n="footer.teacherHeading">Преподавател</h4>
-          <p data-i18n="footer.teacherName">д-р Кохар Андонян</p>
+          <p data-i18n="footer.teacherName">г-жа д-р Кохар Андонян</p>
           <p data-i18n="footer.schoolName">НМУ „Любомир Пипков“, София</p>
         </div>
         <div class="footer-col">
           <h4 data-i18n="footer.linksHeading">Бързи връзки</h4>
           <p><a href="#bio" data-i18n="nav.bio">Биография</a></p>
           <p><a href="#highlights" data-i18n="nav.highlights">Отличия</a></p>
+          <p><a href="#events" data-i18n="nav.events">Събития</a></p>
           <p><a href="#awards" data-i18n="nav.awards">Архив</a></p>
           <p><a href="#gallery" data-i18n="nav.gallery">Снимки</a></p>
           <p><a href="#booking" data-i18n="nav.booking">Контакт</a></p>
@@ -1226,6 +1328,7 @@
           name: 'Никол Самарева',
           bio: 'Биография',
           highlights: 'Отличия',
+          events: 'Събития',
           awards: 'Архив',
           gallery: 'Снимки',
           album: 'Албум',
@@ -1237,14 +1340,17 @@
           label: 'Арфистка',
           title: 'Никол Самарева',
           lead: '16-годишна българска арфистка, носителка на над 40 международни и национални награди.',
-          ctaPrimary: 'Запази дата',
+          ctaPrimary: 'Запитване',
           ctaSecondary: 'Слушай'
         },
         bio: {
           kicker: 'Биография',
           heading: 'За Никол',
-          body: `<p>Никол Самарева е родена на 28 септември 2009 г. в София. Учи в 11. клас на Националното музикално училище „Любомир Пипков“ при доц. д-р Кохар Андонян. Страстта ѝ към арфата започва на 5-годишна възраст и оттогава тя натрупва повече от 40 отличия от конкурси в България, Сърбия, Италия, Швейцария, Канада и други страни.</p>
-<p>Никол е свирила като солист с Академичния оркестър на НМА „Проф. Панчо Владигеров“, участвала е в Националната младежка филхармония и Младежката филхармония София, а също и в камерни проекти с ансамбъл „КласикАрт“. На 12-годишна възраст записва своя първи албум „Небесната арфа на Никол“. Сред най-значимите ѝ изяви са Световният арфов конгрес в Торонто 2026, Световният арфов конгрес в Кардиф 2022, Европейският арфов симпозиум в Австрия 2025 и седмицата на арфата в Париж.</p>`
+          body: `<p>Никол Самарева е родена на 28 септември 2009 г. в София и е сред ярките млади арфисти на своето поколение. В момента е ученичка в 11. клас на Националното музикално училище „Любомир Пипков", където изучава арфа в класа на преподавател по арфа г-жа д-р Кохар Андонян.</p>
+<p>Срещата ѝ с арфата започва още на 5-годишна възраст и бързо се превръща в път, който я отвежда далеч отвъд концертните зали в България. През годините Никол печели над 40 отличия от национални и международни конкурси в България, Сърбия, Италия, Швейцария, Канада и други страни.</p>
+<p>Като солист Никол е свирила с Академичния симфоничен оркестър на НМА „Проф. Панчо Владигеров". Била е част от Националната младежка филхармония и Младежката филхармония „София", а камерната музика я среща и с ансамбъл „КласикАрт".</p>
+<p>Едва на 12 години записва първия си самостоятелен албум „Небесната арфа на Никол". Международното ѝ присъствие включва участия на някои от най-значимите форуми за арфа в света: Световния арфов конгрес в Кардиф през 2022 г. и в Торонто през 2026 г., Европейския арфов симпозиум в Австрия през 2025 г., както и Седмицата на арфата в Париж.</p>
+<p>На 16 години Никол вече има зад гърба си повече от десетилетие с инструмента, десетки международни отличия, собствен албум и сцени, които събират едни от най-добрите арфисти в света. А най-интересната част от музикалния ѝ път тепърва предстои.</p>`
         },
         stats: [
           { num: '5', label: 'години, когато започва арфа' },
@@ -1265,6 +1371,19 @@
             { title: 'I награда, I Международен арфов конкурс VivaHarp', meta: 'София, 2025' },
             { title: 'I награда, I Международен арфов конкурс Adriatic', meta: 'Триест, Италия, 2025' },
             { title: 'Солистка с Академичния оркестър на НМА „Проф. Панчо Владигеров“', meta: 'София' }
+          ]
+        },
+        events: {
+          kicker: 'Календар',
+          heading: 'Събития',
+          intro: 'Предстоящи и минали концерти, рецитали и участия.',
+          upcoming: 'Предстоящи',
+          past: 'Минали',
+          emptyUpcoming: 'Няма обявени предстоящи събития.',
+          emptyPast: 'Няма минали събития.',
+          items: [
+            { title: 'World Harp Congress', location: 'Торонто, Канада', date: '2026-07-19' },
+            { title: 'Концерт на лауреати', location: 'София, България', date: '2025-12-15' }
           ]
         },
         awards: {
@@ -1376,11 +1495,9 @@
           emailLabel: 'Имейл',
           eventLabel: 'Тип събитие',
           eventPlaceholder: 'Изберете тип',
-          eventRecital: 'Рецитал',
-          eventConcerto: 'Концерт',
-          eventChamber: 'Камерна музика',
+          eventConcert: 'Участие в концерт',
           eventPrivate: 'Частно събитие',
-          eventMasterclass: 'Майсторски клас',
+          eventOther: 'Друго запитване',
           dateLabel: 'Дата',
           cityLabel: 'Град',
           venueLabel: 'Място / зала',
@@ -1398,7 +1515,7 @@
         footer: {
           contactHeading: 'Контакт',
           teacherHeading: 'Преподавател',
-          teacherName: 'Доц. д-р Кохар Андонян',
+          teacherName: 'преподавател по арфа г-жа д-р Кохар Андонян',
           schoolName: 'НМУ „Любомир Пипков“, София',
           linksHeading: 'Бързи връзки',
           socialHeading: 'Социални мрежи',
@@ -1411,6 +1528,7 @@
           name: 'Nicole Samareva',
           bio: 'Biography',
           highlights: 'Highlights',
+          events: 'Events',
           awards: 'Archive',
           gallery: 'Photos',
           album: 'Album',
@@ -1428,8 +1546,11 @@
         bio: {
           kicker: 'Biography',
           heading: 'About Nicole',
-          body: `<p>Nicole Samareva was born on 28 September 2009 in Sofia, Bulgaria. She is an 11th-grade student at the National School of Music 'Lyubomir Pipkov', studying with Associate Professor Dr. Kohar Andonyan. Her love for the harp began at age five, and since then she has won more than 40 prizes at competitions across Bulgaria, Serbia, Italy, Switzerland, Canada and beyond.</p>
-<p>Nicole has performed as a soloist with the National Academy of Music Orchestra, taken part in the National Youth Philharmonic and Sofia Youth Philharmonic, and played chamber music with the ClassiArt ensemble. At age twelve she recorded her debut album, <em>Nicole's Heavenly Harp</em>. Her most notable appearances include the World Harp Congress in Toronto 2026, the World Harp Congress in Cardiff 2022, the European Harp Symposium in Austria 2025 and Paris Harp Week.</p>`
+          body: `<p>Nicole Samareva was born on 28 September 2009 in Sofia and is among the brightest young harpists of her generation. She is currently an 11th-grade student at the National School of Music 'Lyubomir Pipkov', where she studies harp in the class of Harp professor Mrs. Kohar Andonyan PhD.</p>
+<p>Her encounter with the harp began at the age of five and quickly became a path that led her far beyond the concert halls of Bulgaria. Over the years, Nicole has won more than 40 prizes at national and international competitions in Bulgaria, Serbia, Italy, Switzerland, Canada and other countries.</p>
+<p>As a soloist, Nicole has performed with the Academic Symphony Orchestra of the National Academy of Music 'Prof. Pancho Vladigerov'. She has been a member of the National Youth Philharmonic and the Sofia Youth Philharmonic, and her chamber music work includes collaborations with the ClassiArt ensemble.</p>
+<p>At just twelve years old, she recorded her debut solo album, <em>Nicole's Heavenly Harp</em>. Her international presence includes appearances at some of the world's most significant harp forums: the World Harp Congress in Cardiff in 2022 and in Toronto in 2026, the European Harp Symposium in Austria in 2025, and Paris Harp Week.</p>
+<p>At sixteen, Nicole already has more than a decade with the instrument behind her, dozens of international prizes, her own album, and stages that bring together some of the finest harpists in the world. The most exciting part of her musical journey is yet to come.</p>`
         },
         stats: [
           { num: '5', label: 'years old when she started harp' },
@@ -1450,6 +1571,19 @@
             { title: '1st Prize, 1st International VivaHarp Competition', meta: 'Sofia, 2025' },
             { title: '1st Prize, 1st International Adriatic Harp Competition', meta: 'Trieste, Italy, 2025' },
             { title: 'Soloist with the NMA Orchestra', meta: 'Sofia' }
+          ]
+        },
+        events: {
+          kicker: 'Calendar',
+          heading: 'Events',
+          intro: 'Upcoming and past concerts, recitals and appearances.',
+          upcoming: 'Upcoming',
+          past: 'Past',
+          emptyUpcoming: 'No upcoming events announced.',
+          emptyPast: 'No past events.',
+          items: [
+            { title: 'World Harp Congress', location: 'Toronto, Canada', date: '2026-07-19' },
+            { title: 'Laureates Concert', location: 'Sofia, Bulgaria', date: '2025-12-15' }
           ]
         },
         awards: {
@@ -1561,11 +1695,9 @@
           emailLabel: 'Email',
           eventLabel: 'Event type',
           eventPlaceholder: 'Select type',
-          eventRecital: 'Recital',
-          eventConcerto: 'Concerto',
-          eventChamber: 'Chamber music',
+          eventConcert: 'Concert',
           eventPrivate: 'Private event',
-          eventMasterclass: 'Masterclass',
+          eventOther: 'Other enquiry',
           dateLabel: 'Date',
           cityLabel: 'City',
           venueLabel: 'Venue',
@@ -1583,7 +1715,7 @@
         footer: {
           contactHeading: 'Contact',
           teacherHeading: 'Teacher',
-          teacherName: 'Assoc. Prof. Dr. Kohar Andonyan',
+          teacherName: 'Harp professor Mrs. Kohar Andonyan PhD',
           schoolName: 'National School of Music "Lyubomir Pipkov", Sofia',
           linksHeading: 'Quick links',
           socialHeading: 'Social',
@@ -1642,6 +1774,54 @@
       `).join('');
     }
 
+    function renderEventItem(item, lang) {
+      const c = content[lang].events;
+      const d = new Date(item.date + 'T00:00:00');
+      const fmt = new Intl.DateTimeFormat(lang === 'bg' ? 'bg-BG' : 'en-GB', {
+        day: 'numeric', month: 'long', year: 'numeric'
+      });
+      return `
+        <li class="event-item">
+          <span class="event-date">${fmt.format(d)}</span>
+          <div>
+            <h3 class="event-title">${item.title}</h3>
+            <p class="event-location">${item.location}</p>
+          </div>
+        </li>
+      `;
+    }
+
+    function renderEvents(items, lang) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const upcoming = [];
+      const past = [];
+      items.forEach(item => {
+        const d = new Date(item.date + 'T00:00:00');
+        d.setHours(0, 0, 0, 0);
+        if (d >= today) {
+          upcoming.push(item);
+        } else {
+          past.push(item);
+        }
+      });
+      upcoming.sort((a, b) => new Date(a.date) - new Date(b.date));
+      past.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const c = content[lang].events;
+      const upcomingEl = document.querySelector('[data-events-upcoming]');
+      const pastEl = document.querySelector('[data-events-past]');
+      if (upcomingEl) {
+        upcomingEl.innerHTML = upcoming.length
+          ? upcoming.map(i => renderEventItem(i, lang)).join('')
+          : `<li class="event-empty">${c.emptyUpcoming}</li>`;
+      }
+      if (pastEl) {
+        pastEl.innerHTML = past.length
+          ? past.map(i => renderEventItem(i, lang)).join('')
+          : `<li class="event-empty">${c.emptyPast}</li>`;
+      }
+    }
+
     function renderPills(items) {
       return items.map(i => `<li class="event-pill">${i}</li>`).join('');
     }
@@ -1655,11 +1835,9 @@
       const c = content[lang].form;
       const options = select.querySelectorAll('option');
       options[0].textContent = c.eventPlaceholder;
-      options[1].textContent = c.eventRecital;
-      options[2].textContent = c.eventConcerto;
-      options[3].textContent = c.eventChamber;
-      options[4].textContent = c.eventPrivate;
-      options[5].textContent = c.eventMasterclass;
+      options[1].textContent = c.eventConcert;
+      options[2].textContent = c.eventPrivate;
+      options[3].textContent = c.eventOther;
     }
 
     function render(lang) {
@@ -1683,6 +1861,10 @@
       const archiveEl = document.querySelector('[data-awards-archive]');
       if (archiveEl) archiveEl.innerHTML = renderAwards(content[lang].awards.years);
       bindAwardToggles();
+
+      if (content[lang].events && content[lang].events.items) {
+        renderEvents(content[lang].events.items, lang);
+      }
 
       const eventsEl = document.querySelector('[data-i18n-pills="festivals.events"]');
       if (eventsEl) eventsEl.innerHTML = renderPills(content[lang].festivals.events);
@@ -1750,11 +1932,9 @@
     function eventTypeLabel(value) {
       const c = content[currentLang].form;
       const map = {
-        recital: c.eventRecital,
-        concerto: c.eventConcerto,
-        chamber: c.eventChamber,
+        concert: c.eventConcert,
         private: c.eventPrivate,
-        masterclass: c.eventMasterclass
+        other: c.eventOther
       };
       return map[value] || value;
     }
